@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Moved to mangowhois.ai</title>
+<script>
+// Old GitHub Pages addresses → the same page on mangowhois.ai (GEODE, Eco²); anything else → the home.
+(() => {
+  const p = location.pathname.replace(/index\.html$/, '');
+  const m = p.match(/^\/geode(\/.*)?$/);
+  const to = m ? 'https://mangowhois.ai/products/geode' + (m[1] || '/')
+    : /^\/eco2\/report(-en)?\.pdf$/.test(p) ? 'https://mangowhois.ai' + p
+    : /^\/eco2(\/|$)/.test(p) ? 'https://mangowhois.ai/eco2/'
+    : 'https://mangowhois.ai/';
+  location.replace(to + location.search + location.hash);
+})();
+</script>
+<style>html{background:#0b0b0c;color:#ecebe6;font:16px/1.5 system-ui,sans-serif}body{margin:0;padding:24px 16px}a{color:inherit}</style>
+</head>
+<body><p>Moved to <a href="https://mangowhois.ai/">mangowhois.ai</a>.</p></body>
+</html>
