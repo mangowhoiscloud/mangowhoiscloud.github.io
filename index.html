@@ -11,6 +11,8 @@ function destination(input) {
   const path = url.pathname.replace(/index\.html$/, '');
   const report = path.match(/^\/(eco2|geode)\/report(-en)?\.pdf$/);
   if (report) return `https://tech.mangowhois.ai/${report[1]}/report/${report[2] ? 'en' : 'ko'}.pdf` + url.search + url.hash;
+  const jevPdf = path.match(/^\/geode\/(?:research|resaerch)\/jev-system1-offloading\/report-(ko|en)\.pdf$/);
+  if (jevPdf) return `https://tech.mangowhois.ai/jev/system-1-offloading/${jevPdf[1]}.pdf` + url.search + url.hash;
   const research = path.match(/^\/geode\/(?:research|resaerch)(?:\/(geode|jev-system1-offloading|jevdb))?\/?$/);
   if (research) {
     const reader = { geode: 'geode/', 'jev-system1-offloading': 'jev/offloading/', jevdb: 'jev/jevdb/' }[research[1]] || '';

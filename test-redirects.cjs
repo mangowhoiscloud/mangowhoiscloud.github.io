@@ -2,6 +2,8 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const cases = {
+ '/geode/resaerch/jev-system1-offloading/report-ko.pdf#page=4': 'https://tech.mangowhois.ai/jev/system-1-offloading/ko.pdf#page=4',
+ '/geode/research/jev-system1-offloading/report-en.pdf': 'https://tech.mangowhois.ai/jev/system-1-offloading/en.pdf',
  '/eco2/report.pdf': 'https://tech.mangowhois.ai/eco2/report/ko.pdf',
  '/eco2/report-en.pdf?download=1#page=3': 'https://tech.mangowhois.ai/eco2/report/en.pdf?download=1#page=3',
  '/geode/report.pdf': 'https://tech.mangowhois.ai/geode/report/ko.pdf',
