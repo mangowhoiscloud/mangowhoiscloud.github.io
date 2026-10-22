@@ -6,18 +6,32 @@
 <meta name="robots" content="noindex">
 <title>Moved to mangowhois.ai</title>
 <script>
-// Old GitHub Pages addresses → the same page on mangowhois.ai (GEODE, Eco²); anything else → the home.
-(() => {
-  const p = location.pathname.replace(/index\.html$/, '');
-  const m = p.match(/^\/geode(\/.*)?$/);
-  const to = m ? 'https://mangowhois.ai/products/geode' + (m[1] || '/')
-    : /^\/eco2\/report(-en)?\.pdf$/.test(p) ? 'https://mangowhois.ai' + p
-    : /^\/eco2(\/|$)/.test(p) ? 'https://mangowhois.ai/eco2/'
+function destination(input) {
+  const url = new URL(input);
+  const path = url.pathname.replace(/index\.html$/, '');
+  const report = path.match(/^\/(eco2|geode)\/report(-en)?\.pdf$/);
+  if (report) return `https://tech.mangowhois.ai/${report[1]}/report/${report[2] ? 'en' : 'ko'}.pdf` + url.search + url.hash;
+  const research = path.match(/^\/geode\/(?:research|resaerch)(?:\/(geode|jev-system1-offloading|jevdb))?\/?$/);
+  if (research) {
+    const reader = { geode: 'geode/', 'jev-system1-offloading': 'jev/offloading/', jevdb: 'jev/jevdb/' }[research[1]] || '';
+    return 'https://tech.mangowhois.ai/' + reader + url.search + url.hash;
+  }
+  const geode = path.match(/^\/geode(\/.*)?$/);
+  const target = geode ? 'https://mangowhois.ai/products/geode' + (geode[1] || '/')
+    : /^\/eco2(\/|$)/.test(path) ? 'https://mangowhois.ai/eco2/'
     : 'https://mangowhois.ai/';
-  location.replace(to + location.search + location.hash);
-})();
+  return target + url.search + url.hash;
+}
+location.replace(destination(location.href));
 </script>
 <style>html{background:#0b0b0c;color:#ecebe6;font:16px/1.5 system-ui,sans-serif}body{margin:0;padding:24px 16px}a{color:inherit}</style>
 </head>
-<body><p>Moved to <a href="https://mangowhois.ai/">mangowhois.ai</a>.</p></body>
+<body>
+<p>This publication has moved. If it does not open automatically:</p>
+<ul>
+<li>Eco² report: <a href="https://tech.mangowhois.ai/eco2/report/ko.pdf">한국어 PDF</a> · <a href="https://tech.mangowhois.ai/eco2/report/en.pdf">English PDF</a></li>
+<li>GEODE report: <a href="https://tech.mangowhois.ai/geode/">Research reader</a></li>
+<li><a href="https://mangowhois.ai/">mangowhois.ai portfolio</a></li>
+</ul>
+</body>
 </html>
